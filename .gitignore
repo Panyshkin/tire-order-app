@@ -1,0 +1,21 @@
+# Директории
+node_modules/
+dist/
+.vite/
+.DS_Store
+
+# Файлы
+*.log
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+Thumbs.db
+Desktop.ini
