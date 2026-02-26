@@ -1,4 +1,5 @@
 :root {
+    
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -95,3 +96,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.app .app-footer-text {
+    text-align: right !important;
+    margin-top: 20px !important;
+    padding: 15px 0 10px 0 !important;
+    font-size: 0.85rem !important;
+    color: #98989d !important;
+    border-top: 1px solid #38383a !important;
+    width: 100%;
+    display: block;
+    clear: both;
+}
+
+

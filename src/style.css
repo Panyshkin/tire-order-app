@@ -582,3 +582,13 @@
             .modal { border-radius: var(--radius-xl); margin: auto; max-height: 85vh; }
             .modal-overlay { align-items: center; padding: 20px; }
         }
+.app-footer-text {
+    text-align: right;
+    margin-top: 20px;
+    padding: 10px 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 0.5px solid var(--border);
+    width: 100%;
+    display: block;
+}' >> src/style.css
