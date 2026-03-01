@@ -22,11 +22,14 @@
             --radius-xl: 20px;
             --shadow: 0 4px 24px rgba(0,0,0,0.4);
             --shadow-lg: 0 16px 48px rgba(0,0,0,0.6);
-            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 
+1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+          font-family: -apple-system, 
+BlinkMacSystemFont, 
+'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
@@ -592,3 +595,68 @@
     width: 100%;
     display: block;
 }' >> src/style.css
+
+
+
+/* Кнопки внутри настроек */
+.settings-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-item .btn-done {
+    flex: 0 0 auto;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    
+    /* Выравнивание иконки и текста */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    
+    /* Фиксированная высота под селект */
+    height: 42px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.settings-item .btn-done i {
+    font-size: 1rem;
+    line-height: 1;
+    display: inline-block;
+}
+
+.settings-item .btn-done:active {
+    background: var(--primary-hover);
+    transform: scale(0.97);
+}
+
+.settings-item .btn-done:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Селект подразделения */
+#settingsSubdivision {
+    height: 42px;
+    padding: 0 12px;
+    font-size: 0.95rem;
+    background: var(--surface-2);
+    border: none;
+    border-radius: var(--radius);
+    color: var(--text);
+    outline: none;
+    flex: 1;
+}
+
+#settingsSubdivision:focus {
+    box-shadow: 0 0 0 2px var(--primary-glow);
+}

@@ -1,4 +1,6 @@
 // Главный файл приложения
+import { renderClientModal, setupClientModalHandlers } from './ui/clientModal.js';
+import { renderMechanicsModal, setupMechanicsModalHandlers } from './ui/mechanicsModal.js';
 import { loadFromStorage } from './storage.js';
 import { initState, subscribe, getTotalSum, getSelectedCounts } from './state.js';
 import { setupConfirmHandlers } from './utils/confirm.js';
@@ -6,7 +8,8 @@ import { registerModal, openModal } from './utils/modal.js';
 import { showToast } from './utils/toast.js';
 import { MODAL_IDS, MAIN_SCREEN_IDS } from './constants.js';
 import { renderWheelsModal, setupWheelsModalHandlers } from './ui/wheelsModal.js';
-
+import { renderSettingsModal, setupSettingsModalHandlers } 
+from './ui/settingsModal.js';
 
 // Инициализация приложения
 async function initApp() {
@@ -42,19 +45,29 @@ async function initApp() {
 // Регистрация всех модальных окон
 function registerModals() {
   // Механики
-  registerModal(MODAL_IDS.MECHANICS, {
-    onOpen: () => console.log('Открыта модалка механиков')
-  });
-  
+registerModal(MODAL_IDS.MECHANICS, {
+  onOpen: () => {
+    console.log('Открыта модалка механиков');
+    renderMechanicsModal();
+    setupMechanicsModalHandlers();
+  }
+});  
+
   // Клиент
   registerModal(MODAL_IDS.CLIENT, {
-    onOpen: () => console.log('Открыта модалка клиента')
+    onOpen: () => {
+      console.log('Открыта модалка клиента');
+      renderClientModal();
+      setupClientModalHandlers();
+    }
   });
   
   // Колёса
   registerModal(MODAL_IDS.WHEELS, {
-    onOpen: () => console.log('Открыта модалка колёс')
+    onOpen: () => {
+        console.log('Открыта модалка колёс')
 	renderWheelsModal();
+}
   });
   
   // Материалы
@@ -68,8 +81,13 @@ function registerModals() {
   });
   
   // Настройки
+    // Настройки
   registerModal(MODAL_IDS.SETTINGS, {
-    onOpen: () => console.log('Открыта модалка настроек')
+    onOpen: () => {
+      console.log('Открыта модалка настроек');
+      renderSettingsModal();
+      setupSettingsModalHandlers();
+    }
   });
   
   // История

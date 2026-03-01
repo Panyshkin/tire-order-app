@@ -1,6 +1,11 @@
 // src/js/constants.js
 // Константы приложения
 
+// Список подразделений для выбора
+export const SUBDIVISIONS = ['Оренбург', 'Новокуйбышевск', 
+'Бузулук', 
+'Отрадный','Похвистнево','Сорочинск','Сердобск'];
+
 // Ключи для localStorage
 export const STORAGE_KEYS = {
   MECHANICS: 'tireShop_mechanics',
@@ -103,40 +108,7 @@ export const MAIN_SCREEN_IDS = {
   TOTAL_SUM: 'btnSaveSum'
 };
 
-// Настройки по умолчанию (если нет данных из 1С)
-export const DEFAULT_DATA = {
-  mechanics: ['Иванов Иван', 'Петров Петр', 'Сидоров Сидор'],
-  
-  materials: [
-    { id: 'mat1', name: 'Грузики 5г', price: 50 },
-    { id: 'mat2', name: 'Грузики 10г', price: 70 },
-    { id: 'mat3', name: 'Грузики 15г', price: 90 },
-    { id: 'mat4', name: 'Золотник', price: 30 },
-    { id: 'mat5', name: 'Колпачок', price: 20 },
-    { id: 'mat6', name: 'Ремкомплект', price: 150 }
-  ],
-  
-  services: [
-    { id: 'svc1', name: '1 Съём/установка колеса R13-16', price: 500 },
-    { id: 'svc2', name: '1 Съём/установка колеса R17-19', price: 600 },
-    { id: 'svc3', name: '1 Съём/установка колеса R20-22', price: 800 },
-    { id: 'svc4', name: '2 Демонтаж/монтаж шины R13-16', price: 800 },
-    { id: 'svc5', name: '2 Демонтаж/монтаж шины R17-19', price: 1000 },
-    { id: 'svc6', name: '2 Демонтаж/монтаж шины R20-22', price: 1300 },
-    { id: 'svc7', name: '3 Балансировка R13-16', price: 400 },
-    { id: 'svc8', name: '3 Балансировка R17-19', price: 500 },
-    { id: 'svc9', name: '3 Балансировка R20-22', price: 700 },
-    { id: 'svc10', name: '4 Ремонт прокола (без демонтажа)', price: 300 },
-    { id: 'svc11', name: '4 Ремонт прокола (жгут)', price: 500 },
-    { id: 'svc12', name: '5 Ремонт пореза (вулканизация)', price: 1000 },
-    { id: 'svc13', name: 'Технологическая мойка', price: 300 },
-    { id: 'svc14', name: 'Обработка герметиком', price: 200 },
-    { id: 'svc15', name: 'Снятие/установка датчика давления', price: 200 },
-    { id: 'svc16', name: 'Утилизация покрышки', price: 100 },
-    { id: 'svc17', name: 'Подкачка азотом', price: 300 },
-    { id: 'svc18', name: 'Хранение шин (комплект)', price: 500 }
-  ]
-};
+
 
 // Временные интервалы для фильтрации истории (в миллисекундах)
 export const HISTORY_TIME_RANGES = {
