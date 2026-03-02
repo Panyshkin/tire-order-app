@@ -1,4 +1,8 @@
-// Главный файл приложения
+//Главное окно приложения
+
+import { handleCreateOrder } from './handlers/order.js';
+import { renderServicesModal, setupServicesModalHandlers } from './ui/servicesModal.js';
+import { renderMaterialsModal, setupMaterialsModalHandlers } from './ui/materialsModal.js';
 import { renderClientModal, setupClientModalHandlers } from './ui/clientModal.js';
 import { renderMechanicsModal, setupMechanicsModalHandlers } from './ui/mechanicsModal.js';
 import { loadFromStorage } from './storage.js';
@@ -8,8 +12,7 @@ import { registerModal, openModal } from './utils/modal.js';
 import { showToast } from './utils/toast.js';
 import { MODAL_IDS, MAIN_SCREEN_IDS } from './constants.js';
 import { renderWheelsModal, setupWheelsModalHandlers } from './ui/wheelsModal.js';
-import { renderSettingsModal, setupSettingsModalHandlers } 
-from './ui/settingsModal.js';
+import { renderSettingsModal, setupSettingsModalHandlers } from './ui/settingsModal.js';
 
 // Инициализация приложения
 async function initApp() {
@@ -72,12 +75,20 @@ registerModal(MODAL_IDS.MECHANICS, {
   
   // Материалы
   registerModal(MODAL_IDS.MATERIALS, {
-    onOpen: () => console.log('Открыта модалка материалов')
+    onOpen: () => {
+      console.log('Открыта модалка материалов');
+      renderMaterialsModal();
+      setupMaterialsModalHandlers();
+    }
   });
   
   // Услуги
   registerModal(MODAL_IDS.SERVICES, {
-    onOpen: () => console.log('Открыта модалка услуг')
+    onOpen: () => {
+      console.log('Открыта модалка услуг');
+      renderServicesModal();
+      setupServicesModalHandlers();
+    }
   });
   
   // Настройки
@@ -133,14 +144,11 @@ function setupEventListeners() {
     });
   }
   
-  // Кнопка создания заказа
-  const btnCreateOrder = document.getElementById('btnCreateOrder');
-  if (btnCreateOrder) {
-    btnCreateOrder.addEventListener('click', () => {
-      // TODO: создать заказ
-      console.log('Создание заказа');
-    });
-  }
+// Кнопка создания заказа
+const btnCreateOrder = document.getElementById('btnCreateOrder');
+if (btnCreateOrder) {
+  btnCreateOrder.addEventListener('click', handleCreateOrder);
+}
 }
 
 // Обновление главного экрана

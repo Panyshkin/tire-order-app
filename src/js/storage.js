@@ -160,3 +160,48 @@ export function getDataStats() {
     subdivision: currentSubdivision
   };
 }
+
+// ======== ИСТОРИЯ ЗАКАЗОВ ========
+
+const ORDERS_KEY = 'tireShop_orders';
+
+/**
+ * Сохранить заказ в историю
+ * @param {Object} order - Объект заказа с номером и датой
+ */
+export function saveOrderToHistory(order) {
+  try {
+    const orders = JSON.parse(localStorage.getItem(ORDERS_KEY)) 
+|| [];
+    orders.unshift(order);
+    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+    console.log('📜 Заказ сохранён в историю');
+  } catch (e) {
+    console.error('Ошибка сохранения истории:', e);
+  }
+}
+
+/**
+ * Получить всю историю заказов
+ * @returns {Array} Массив заказов
+ */
+export function getOrdersHistory() {
+  try {
+    return JSON.parse(localStorage.getItem(ORDERS_KEY)) || [];
+  } catch (e) {
+    console.error('Ошибка чтения истории:', e);
+    return [];
+  }
+}
+
+/**
+ * Очистить историю заказов
+ */
+export function clearOrdersHistory() {
+  try {
+    localStorage.removeItem(ORDERS_KEY);
+    console.log('🗑️ История очищена');
+  } catch (e) {
+    console.error('Ошибка очистки истории:', e);
+  }
+}

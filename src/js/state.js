@@ -460,3 +460,75 @@ export function validateOrder() {
     errors
   };
 }
+
+/* Установить всем материалам и услугам количество = текущее 
+количество колёс и сбросить выбор
+ */
+export function applyWheelsToAll() {
+  const qty = state.wheels.qty;
+
+  // Обновляем материалы
+  state.materials = state.materials.map(m => ({
+    ...m,
+    qty: qty,
+    selected: false
+  }));
+
+  // Обновляем услуги
+  state.services = state.services.map(s => ({
+    ...s,
+    qty: qty,
+    selected: false
+  }));
+
+  notifySubscribers();
+}
+
+// ======== ПОДГОТОВКА ДАННЫХ ДЛЯ ОТПРАВКИ ========
+
+/**
+ * Получить данные заказа в формате для отправки в 1С
+ * @returns {Object} Объект заказа
+ */
+export function getOrderData() {
+  const selectedMechanics = state.mechanics.join(', ');
+  const client = { ...state.client };
+const wheels = {
+  radius: state.wheels.radius,
+  qty: state.wheels.qty,
+  types: {
+    light: state.wheels.type === 'light',   // true, если выбран тип light
+    jeep: state.wheels.type === 'jeep',     // true, если выбран тип jeep
+    lowProfile: state.wheels.lowProfile,
+    runflat: state.wheels.runflat
+  }
+};
+  const materials = state.materials
+    .filter(m => m.selected)
+    .map(m => ({
+      id: m.id,
+      name: m.name,
+      price: m.price,
+      qty: m.qty
+    }));
+  const services = state.services
+    .filter(s => s.selected)
+    .map(s => ({
+      id: s.id,
+      name: s.name,
+      price: s.price,
+      qty: s.qty,
+      radius: s.radius,
+      carType: s.carType,
+      lowProfile: s.lowProfile,
+      runflat: s.runflat
+    }));
+
+  return {
+    manager: selectedMechanics,
+    client,
+    wheels,
+    materials,
+    services
+  };
+}

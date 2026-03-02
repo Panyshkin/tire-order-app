@@ -31,7 +31,7 @@ export const WHEELS = {
   
   // Ограничения количества
   MIN_QTY: 1,
-  MAX_QTY: 20,
+  MAX_QTY: 8,
   
   // Значения по умолчанию
   DEFAULT_QTY: 4,
