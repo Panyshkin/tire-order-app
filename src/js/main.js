@@ -1,5 +1,6 @@
 //Главное окно приложения
 
+import { handleReset } from './handlers/reset.js';
 import { handleCreateOrder } from './handlers/order.js';
 import { renderServicesModal, setupServicesModalHandlers } from './ui/servicesModal.js';
 import { renderMaterialsModal, setupMaterialsModalHandlers } from './ui/materialsModal.js';
@@ -134,16 +135,13 @@ function setupEventListeners() {
       openModal(MODAL_IDS.HISTORY);
     });
   }
-  
-  // Кнопка сброса
-  const btnReset = document.getElementById('btnReset');
-  if (btnReset) {
-    btnReset.addEventListener('click', () => {
-      // TODO: показать подтверждение и сбросить
-      console.log('Сброс заказа');
-    });
-  }
-  
+
+// Кнопка сброса
+const btnReset = document.getElementById('btnReset');
+if (btnReset) {
+  btnReset.addEventListener('click', handleReset);
+}  
+
 // Кнопка создания заказа
 const btnCreateOrder = document.getElementById('btnCreateOrder');
 if (btnCreateOrder) {
